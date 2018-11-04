@@ -1,15 +1,15 @@
  Aufgabe05,
   1. ja
   2. ja
-  3. nein, 
-  4. nein, . statt ,
+  3. nein, weil ++ kein Befehl ist
+  4. nein, "." statt ","
   5. nein, 5y keine Bedeutung 
-  6. nein,
+  6. ja, da "- -" als + gewertet wird
   7. ja, a,b,c,e sind Variablenname
   8. nein, %-Operator kann nur auf ganze Zahlen angewendet werden
   9.  4
   10. -4
-  11. 32
+  11.  -32
   12. 32
   13. 5
   14. 
