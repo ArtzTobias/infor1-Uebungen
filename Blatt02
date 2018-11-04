@@ -2,17 +2,200 @@
   1. ja
   2. ja
   3. nein, 
-  4. nein, . statt ,
+  4. nein, "." statt ","
   5. nein, 5y keine Bedeutung 
-  6. nein,
+  6. ja, weil "- -" als + gewertet wird
   7. ja, a,b,c,e sind Variablenname
   8. nein, %-Operator kann nur auf ganze Zahlen angewendet werden
   9.  4
   10. -4
-  11. 32
-  12. 32
-  13. 5
-  14. 
-  15. 8
-  16. 5
-  17. 
+  11. 'A'-'a' --> 65 - 97 = -32
+  12. 'a'-'A' --> 97 - 65 = 32
+  13. '7'-'2' --> 55 - 50 = 5
+  14. '2'-'a' --> 50 - 97 = -47
+  15. The Wire
+  16. Lost
+  17.  -1 (1 Leerzeichen vor der Zahl -1)
+  18. The Sopranos 10000
+  19. 0
+  20. 0.1.0
+
+Aufgabe06,
+ 
+ a) 
+  
+ #include <stdio.h>
+ 
+ int main(void)
+ { 
+	 char x;
+	 char y;
+  printf("\n Bitte zwei Buchstaben eingeben: ")
+  x = getchar();
+  y = getchar();
+	
+	 if ( x >= 'A' && x <= 'Z')
+	{
+		 printf("\n Sie haben einen Grossbuchstaben eingegeben.");
+	}
+	 else 
+	{
+		 printf("\n Sie haben einen Kleinbuchstaben eingegeben."); 
+	}
+	 if ( y >= 'A' && y <= 'Z')
+	{
+		 printf("\n Sie haben einen Grossbuchstaben eingegeben.");
+	}
+	 else 
+	{
+		 printf("\n Sie haben einen Kleinbuchstaben eingegeben."); 
+	}
+  
+ return 0;
+}
+ 
+ b)
+ 
+ 
+ 
+ 
+ c)
+ 
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+	float x;
+	printf("Geben sie eine Dezimalzahl ein: ");
+	scanf("%f", &x);
+	x = x * sin(x) * pow(10,-2);
+	printf("\n Ergebnis: %f", x);
+	
+ return 0;
+} 
+
+d)
+
+#include <stdio.h>
+#include <math.h>
+int main(void)
+{
+	float x;
+	float y;
+	
+	printf("\n Geben sie eine Zahl ein: ");
+	scanf("%f", &x);
+	printf("\n Geben sie eine zweite Zahl ein: ");
+	scanf("%f", &y);
+	
+	x = exp(x);
+	y = exp(y);
+	
+	printf("\n Das Ergebnis ist %.3f", x * y);
+
+	return 0;
+} 
+
+Aufgabe07,
+
+a)
+x = 42
+y = 12
+  
+   x  y
+  30 12
+  18 12
+   6 12
+
+Welche mathematische Operation berechnet der Algorithmus? Antwort: while
+
+b)
+
+#include <stdio.h>
+
+
+int main(void)
+{
+	int x;
+	int y;
+	
+	printf("Bitte geben sie zwei positive Zahlen, ");
+	printf("getrennt durch ein Leerzeichen ein:");
+	scanf("%i %i", &x, &y);
+	
+	while ( x+1 > y)
+	{
+		x = x - y;
+		printf("\n %i", x);
+	}
+	
+	return 0;
+}
+   
+c)
+
+Eingabe: xeN, x > 2
+falls x mod 2 gleich 0
+ Ausgabe 1
+sonst
+Ausgabe 0
+
+d) 
+
+#include <stdio.h>
+
+int main(void)
+{
+	int a;
+	int b = 0;
+	int c;
+	
+	printf("Geben sie eine ganze natuerliche Zahl ein: ");
+	scanf("%i", &a);
+	
+	while( a > 0 )
+	{
+		a = a - 1;
+		c = b + a;
+		b = b + 3 * c;
+		
+		printf("\n %i", a);
+	}
+	printf("\n %i", b);
+	
+	
+	return 0;
+} 
+ 
+ Aufgabe08,
+ 
+ a) 
+ 
+ Anzahl  1008  1007  1006
+   1       0     4     5
+   2       4     4     4
+   3       8     4     3
+   4      12     4     2 
+   5      16     4     1
+   6      20     4     0
+   
+   Ausgabe: 20
+   
+   Welche Berechnung wird durch dieses Programm realisiert? 
+   Antwort: Addition der Zahl 4 in 6 Schleifen.
+   
+b) 
+
+SZ 1000 INIT 1008
+SZ 1001 ADD 1008, 1006
+SZ 1002 SPRUNG 1007, 1009
+SZ 1003 DEKREMENT 1007
+SZ 1004 DEKREMENT 1008
+SZ 1005 SPRUNG 1002
+SZ 1009 AUSGABE 1008
+  
+
+
+ 
+ 
