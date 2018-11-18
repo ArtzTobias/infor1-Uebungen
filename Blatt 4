@@ -1,0 +1,145 @@
+Aufgabe 13
+
+a)
+
+1. x = 2 
+2. y = 15
+3. y = 3 
+4. x = 2
+5. x = 3
+6. x = 1
+7. x = -3
+8. x = 1
+9. x = 3
+10. x = 0
+11. x = 5
+
+b)
+
+1. char
+2. int
+3. double
+4. Wahrheitswert → int
+5. double
+6. char
+7. Wahrheitswert → int
+8. int
+9. int
+10. double
+
+Aufgabe 14
+
+siehe Blatt
+
+Aufgabe 15
+
+siehe Blatt
+
+Aufgabe 16
+
+a)
+#include <stdio.h>
+
+int funktion1(int x)
+{
+	char x;
+	
+	if ( x < 65 || x > 90)
+	{
+		printf("Ungueltige Eingabe");
+	} 
+	return x;
+}
+b)
+
+#include <stdio.h>
+
+int funktion2(int x)
+{
+	char x;
+	
+	x = x - 32;
+	
+	return x;
+}
+
+c)
+
+#include <stdio.h>
+
+int funktion1(int x)
+{
+	char x;
+	
+	if ( x >= 65 && x <= 90 || (x >= 97 && x <= 122))
+	{
+		printf("Eingabe gueltig");
+	} else {
+		printf("Eingabe ungueltig");
+	}
+	return x;
+}
+
+d)
+
+#include <stdio.h>
+
+char funktion1(char x);
+char funktion2(char x);
+char funktion3(char x);
+
+int main(void)
+{
+	int status;
+	char x;
+	
+	printf("\nGeben sie ein Zeichen ein: ");
+	status = scanf("%c", &x);
+	
+	if (status != 1 || getchar() != '\n')
+	{
+		printf("Ungueltige Eingabe");
+		return 1;
+	}
+	
+	funktion1(x);
+	funktion2(x);
+	funktion3(x);
+	return 0;
+}
+
+char funktion1(char x)
+{
+	
+	if ( x < 65 || x > 90)
+	{
+		printf("\n a: Ungueltige Eingabe");
+	} else {
+		printf("\n a: Eingabe gueltig");
+	}
+	return x;
+}
+
+char funktion2(char x)
+{
+	if (x >= 65 && x <= 90)
+	{	
+		x = x + 32;
+		printf("\n b: %c", x);
+	} else {
+		printf("\n b: Ungueltige Eingabe");
+	}
+	return x;
+}
+
+char funktion3(char x)
+{
+	
+	if ((x >= 65 && x <= 90) || (x >= 97 && x <= 122))
+	{
+		printf("\n c: Eingabe gueltig");
+	} else {
+		printf("\n c: Eingabe ungueltig");
+	}
+	return x;
+}
