@@ -1,0 +1,259 @@
+Aufgabe 17
+
+a)
+
+#include <stdio.h>
+
+int multiply(int a, int b)
+{
+	int c = b;
+	while (a > 1)
+	{	
+		b = b + c;
+		--a;
+	}
+	if (a == 0)
+		return 0;
+	return b;
+}
+
+b)
+
+#include <stdio.h>
+
+
+int calc_number_of_digits(int n)
+{
+	int count = 0;
+	
+	while (n > 0)
+	{
+		n = n / 10;
+		++count;
+	}	
+}
+
+c)
+
+#include <stdio.h>
+
+void print_rectangle(int lines, int columns)
+{
+	int x, y;
+	int i = 0;
+	
+	for (x = 1; x <= lines; x++)
+	{
+		printf("\n");
+		for (y = 1; y <= columns; y++)
+			printf("%i", i);
+	}
+	
+}
+
+d)
+
+#include <stdio.h>
+
+void print_triangle(int n)
+{
+	int x, y;
+	
+	for (x = 0; x <= n; x++)
+	{
+		printf("\n");
+		for (y = 0; y <= x; y++)
+			printf("0");
+	}
+}
+
+e)
+
+
+
+Aufgabe 18
+
+a)
+
+int main(void)
+{
+	int zahl;
+	
+	printf("\nBitte eine Ganzzahl eingeben: ");
+	scanf("%i", &zahl);
+	//keine Zahl eingegeben
+	if(scanf("%i"; &zahl) != 1 || getchar() != '\n') 
+		return 0;
+	printf("Der ASCII-Code der eingelesenen Ziffer lautet %i\n", eingabe);
+	//ASCII = Zahl + 48, da 0 den ASCII Code 48 hat
+    return &zahl + 48;
+}
+
+b)
+
+#include <stdio.h>
+
+int read_number(void)
+{
+	int x, status;
+
+	printf("Geben sie eine Zahl zwischen 8 und 40 ein: ");
+	status = scanf("%i", &x);
+	if (status != 1 || getchar() != '\n' || x < 8 || x > 40)
+	{
+		printf("Ungueltige Eingabe");
+		return -1;
+	} else {
+		printf("%i", x);
+	}
+	return x;
+}
+
+int main(void)
+{
+	//solange einlesen, bis eine gültige Zahl eingegeben wurde
+	while(read_number() == -1);
+		
+	return read_number() > -1 ? 0 : -1; 
+}
+
+Aufgabe 19
+
+a)
+
+void print_array(int w[], int n)
+{
+    int i = 0;
+	while(i < w.length && i < n)
+	{
+		printf([x]);
+		if( x < x.lengh-1 && x < n-1) 
+			printf(",");
+		
+	   i++;
+	}
+	
+	for (x = 0; x < n; x++)
+	{
+		printf([x]);
+		if(x < n-1) printf(",");
+	}
+}
+
+b)
+
+Eingabe: a1, a2,....,an E N, n E N
+für i ← 1 bis n tue
+
+	wenn ai >  ai+1 dann 
+		Ausgabe: 0
+
+Ausgabe: 1
+
+c)
+
+
+
+d)
+
+Eingabe a1, a2,...,an E N, n E N
+
+min ← a1
+für i ← 1 bis n tue 
+	
+	wenn ai < min dann
+		min ← ai;
+Ausgabe: min
+
+e)
+
+Vermutung: Sucht die Zahl, die an der Stelle s angegeben wird.
+
+#include <stdio.h>
+
+int main(void)
+{
+	int a[i];
+	int s;
+	int m;
+	int li = 0;
+	int re = i + 1;
+
+	while (li < re - 1)
+	{
+		m = (li + re) / 2;
+		
+		if (s <= a[i])
+		{	
+			re = m;
+		} else {
+			li = m;
+		}
+		
+		result re;
+	}			
+}
+
+Aufgabe 20
+
+a)
+
+void my_strcpy(char s[], const char ct[])
+{
+	for(x = 0; x < ct.length; x++)
+	{
+		s[x] = ct[x];
+	}
+}
+
+b)
+
+void my_strcat(char s[], const char ct[], int n)
+{
+	//temp = new [s.length + n];
+	//my_strcat(temp, s);
+	//index erste leere Stelle ermitteln
+	firstIndex
+	for(x = firstIndex; x < n + firstIndex ; x++)
+	{
+		s[x] = ct[x];
+	}
+}
+
+c)
+
+#include <stdio.h>
+#include <string.h>
+
+void array_swap(char ct[], int i, int j) 
+{ 
+	int hilf = ct[i]; 
+	ct[i] = ct[j]; 
+	ct[j] = hilf; 
+}
+
+int ispalindrom(const char ct[]) 
+{ 
+	int i; 
+	int n = my_strlen(ct); 
+	
+	for (i = 0; i <= n / 2 - 1; ++i)  
+		array_swap(ct[], i, n - 1 - i); 
+			
+	if (strcmp(ct[], array_swap() == 1)
+		return 1;
+	else
+		return 0;
+}
+
+int main(void)
+{
+	char eingabe [20];
+	printf("Geben sie ein Palindrom ein: ");
+	gets(satz);
+	ispalindrom(const char ct[]);
+	
+	return 0;
+}
+
+d)
