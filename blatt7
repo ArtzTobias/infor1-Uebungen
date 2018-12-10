@@ -1,0 +1,315 @@
+Aufgabe 25
+
+a)
+
+#ifndef CTYPE_H_INCLUDED
+#define CTYPE_H_INCLUDED
+
+int isupper(int a);
+int tolower(int b);
+int isalpha(int c);
+
+#endif CTYPE_H_INCLUDED
+
+--------------------------------------------------------------------
+
+#inlcude <stdio.h>
+#include "ctype.h"
+
+int main(void)
+{
+		char c = 'x'; 
+		char d = 'Y'; 
+		printf("isupper \t Eingabe: %c \t\t R¨uckgabewert: %i\n", c, isupper(c)); 
+		printf("isalpha \t Eingabe: %c \t\t R¨uckgabewert: %i\n", c, isalpha(c)); 
+		printf("tolower \t Eingabe: %c \t\t R¨uckgabewert: %c\n", d, tolower(d)); 
+		return 0;
+
+}
+
+int isupper(int c) 
+{ 
+	return (c >= 'A') && (c <= 'Z'); 
+} 
+
+int tolower(int c) 
+{ 
+	return ((c >= 'A') && (c <= 'Z')) ? (c + 32) : c; 
+} 
+
+int isalpha(int c) 
+{ 
+	return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'); 
+} 
+
+b)
+
+gcc -c ctype.c
+
+gcc ctype.o a25_main.c
+
+
+
+Aufgabe 26
+
+a) + c)
+
+#include <stdio.h>
+
+int flush_buff(void);
+int read(void);
+
+int main(void)
+{
+	int test;
+	
+	test = read();
+	
+	switch(test)
+	{
+		case 1: 
+			printf("Pufferfehler!");
+			break;
+		case 2:
+			printf("Ungueltige Eingabe!");
+			break;
+		case 0:
+			printf("Gueltige Eingabe!");
+	}
+	
+	return 0;
+}
+	
+int read(void)
+{
+	int zahl;
+	int status;
+	
+	printf("\nGeben sie eine Zahl zwischen 1 und 12 ein: ");
+	status = scanf("%i", &zahl);
+	
+	if(status != 1 || getchar() != '\n' || zahl < 1 || zahl > 12)
+	{
+		flush_buff();
+		return 2;
+	}
+	if(zahl == EOF) 
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int flush_buff(void) 
+{
+	int c;
+	while ((c = getchar()) != '\n' && c != EOF) {}
+	return c != EOF;
+}
+
+b) ?
+
+
+Aufgabe 27
+
+a) 
+
+1. (11001.01)2
+
+1x2^4 + 1x2^3 + 0x2^2 + 0x2^1 + 1x2^0 + 0x2^-1 + 1x2^-2
+= 16 + 8 + 0 + 0 + 1 + 0 + 0.25
+= 24.25
+
+2. (201.2)3
+
+2x3^2 + 0x3^1 + 1x3^0 + 2x3^-1
+= 18 + 0 + 1 + 0.6
+= 19.6
+
+3. (201.2)4
+
+2x4^2 + 0x4^1 + 1x4^0 + 2x4^-1
+= 32 + 0 + 1 + 0.5
+= 33.5
+
+4. (70.3)8
+
+7x8^1 + 0x8^0 + 3x8^-1
+= 56 + 0 + 0.375
+= 56.375
+
+5. (AA.A)16
+
+10x16^1 + 10x16^0 + 10x16^-1
+= 16 + 10 + 0.625
+= 26.625
+
+b)
+
+1. (35.1)10
+
+3x10^1 + 5x10^0 + 1x10^-1
+= 30 + 5 + 0.1
+= 35.1
+
+= 1x2^5 + 1x2^1 + 1x2^0 
+= 35
+
+0.1 x 2 = 02 → 0
+0.2 x 2 = 04 → 0
+0.4 x 2 = 08 → 0
+0.8 x 2 = 1.6 → 1
+0.6 x 2 = 1.2 → 1
+0.2 x 2 = Wiederholung
+
+Ergebnis: (100011.00011)2
+
+
+2. (35.1)10
+
+3x10^1 + 5x10^0 + 1x10^-1
+= 30 + 5 + 0.1
+= 35.1
+
+1x5^2 + 2x5^1
+
+0.1 x 5 = 0.5 → 0
+0.5 x 5 = 2.5 → 2
+0.5 x 5 = Wiederholung
+
+Ergebnis: (110.02)5
+
+
+3. (47.1)10
+
+4x10^1 + 7x10^0 + 1x10^-1
+= 40 + 7 + 0.1
+= 47.1
+
+1x16^2 + 15x16^0
+
+0.1 x 16 = 1.6 → 1
+0.6 x 16 = 9.6 → 9
+0.6 x 16 = Wiederholung
+ 
+Ergebnis: (101.19)16
+
+
+4. (A1.D)16
+
+A = 10 = 1010
+1 = 0001
+D = 13 =  1101
+
+Ergebnis: (10100001.1101)2
+
+
+5. (10110.1001)2
+
+010 = 2
+110 = 6
+100 = 4
+100 = 4
+
+Ergebnis: (26.44)8
+
+c)
+
+1. 1x8^3 = 128 = (1000)8
+Ergebnis: 01000
+
+2. 0XD0 
+0X = -
+D0 = 13x16^1 + 0x16^0
+Ergebnis: 208
+
+3. 'J' = ASCII Nummer: 74
+
+4x16^1 + 10x16^0
+Ergebnis: 0X4A
+
+4. '\152' = (152)8 = 64 + 40 + 2 = 106 = 'j' 
+  
+Aufgabe 28
+
+a) 
+
+1. (101.01)2 + (1.1)2
+
+101.01 + 1.1 = 110.11
+Ergebnis (110.11)2
+
+
+2. (1B.C)16 + (4.4F)16
+
+1B.C + 4.4F 
+
+1 + 0 = 1 
+B + 4 = 12 + 4 = 16 = G
+C + 4 = 13 + 4 = 17 = H
+0 + F = 0 + 15 = 15 = F
+
+= (1G.HF)16 
+Ergebnis: (21.1F)16
+
+b)
+
+1. (111.1)8 – (7.77)8
+
+   111.10 		
+   –  7.77  
+   011.10 (Übertrag)
+= 101.11
+Ergebnis: (101.11)8
+
+2. (121.02)3 – (22.11)3
+
+ 121.02 
+– 22.11 
+ 111.00 (Übertrag)
+= 21.21
+Ergebnis: (21.21)3
+
+c)
+
+1. (121.02)3 x 3^4 = (0.012102)3
+
+2. (111)8 x 8^2 = (1.11)8
+
+3. (121.02)3 / 3^4 = (1210200)3
+
+4. (1000)2 / 2^3 = (1000000)2
+
+d)
+
+1. (AABF.56D)16 = (A.ABF56D)16 x 16^3
+
+2. (0.00007)8  = (7)8 x 8^-5
+
+3. ((1.001)2 x 2^4) x ((1)2 x 2^-1)
+
+= (1.001 x 1)2 x2^4-1 
+Ergebnis: (1.001)2 x 2^3
+
+
+4. ((2.2)3 x3^2) / ((1.1)3 x 3^-1)
+
+= (2.2 / 1.1)3 x 3^2-(-1)
+Ergebnis: (2)3 x 3^3
+
+
+5. ((3.4)8 x 8^1) + ((2.1)8 x 8^0)
+
+((3.4)8 x 8^1) + ((2.1)8 x 8^-1) x 8^1
+
+= ((3.4)8 x 8^1) + ((21)8 x 8^1)
+= (3.4+ 21)8 x8^1
+= (24.4)8 x 8^1 
+Ergebnis: (2.44)8 x 8^2
+
+
+((1.A)16 x 16^1) – ((1.3)16 x 16^1)
+
+= (1.A – 1.3)16 x 16^1
+= (0.7)16 x 16^1
+Ergebnis: (7)16 x16^-1 
