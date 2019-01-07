@@ -1,0 +1,234 @@
+Aufgabe 33
+
+1 int *px;
+
+2 
+double y, *px; 
+px = &y;
+
+3
+char c, *px;
+px = &c;
+
+4
+int **ppx;
+
+5
+double *px = NULL;
+
+6
+char *px, w[10];
+px = w[3];
+
+7
+double x, *px;
+px = &x;
+*px = 3.0;
+
+8
+int x = 0, *px:
+px = &x;
+++(*px);
+
+9
+char *px, w[10];
+px = w[0]:
+px = w[1];
+
+10
+int w[i +1];
+
+11
+int w[10] = {1};
+
+12
+int *px, v[] = {1, 2, 3};
+p = v[];
+p + 2;
+
+13
+int **ppx, *v[] = {1, 2};
+ppx = *v[];
+++(ppx); 
+
+14 a
+15 A
+16 1
+17 b
+18 1
+19 Zeile 6: *p gibt einen Wert und keine Adresse zurück!
+20 Zeile 6: *p wurde nicht deklariert
+21 Zeile 7: %i ist ein falscher Typ
+22 Zeile 7: w und v wurden nicht als Pointer angegeben
+
+
+Aufgabe 34
+
+a) + b)
+
+#include <stdio.h>
+
+int read_interval(double *p);
+
+int main (void)
+{
+	double a = 0;
+	int status;
+	
+	status = read_interval(&a);
+	
+	if (status == 0)
+		printf("Gueltige Eingabe");
+	else 
+		printf("Ungueltige Eingabe");
+	
+	return 0;
+}
+
+int read_interval(double *p)
+{
+	int status;
+	
+	status = scanf("%lf", p);
+	
+	if (status != 1 || *p > 2.5 || *p < (-2.5) || getchar() != '\n')
+	{
+		return 1;
+	} 
+		
+	return 0;
+
+}
+
+
+Aufgabe 35
+
+siehe Blatt
+
+
+Aufgabe 36
+
+a)
+
+#include <stdio.h>
+#include <string.h>
+
+int main (void)
+{
+	char array[] = "Die naechste Vorlesung ist am 7.1.2019, 10:00 Uhr, im HS 1 (Bau C)";
+	char delimiter[] = " )(,";
+	char *ptr;
+	
+	ptr = strtok(array, delimiter);
+	ptr = strtok(NULL, delimiter);
+	
+	while (ptr != NULL)
+	{
+		printf("%s\n", ptr);
+		
+		ptr = strtok(NULL, delimiter);
+	}
+	
+	return 0;
+}
+
+b)
+
+1
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char str[] = "Die naechste Vorlesung ist am 7.1.2019, 10:00 Uhr, im HS 1 (Bau C)";
+	char *ptr;
+	
+	ptr = strstr (str, "2019");
+	
+	if (ptr != 0)
+		printf("Enthalten");
+	else 
+		printf("Nicht Enthalten");
+	
+	return 0;
+}
+
+
+2
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char str[] = "Heute ist der 19.12.2018";
+	char *ptr;
+	
+	ptr = strstr (str, "2019");
+	
+	if (ptr != 0)
+		printf("Enthalten");
+	else 
+		printf("Nicht Enthalten");
+	
+	return 0;
+}
+
+c)
+
+#include <stdio.h>
+
+#define LETTER 't'
+
+int main(void)
+{
+	char *ptr = "Das ist der Buchstabe D\0";
+	int i;
+	int number;
+	
+	printf("%s", ptr);
+	
+	for (i = 1; i < 100; i++)
+	{
+		if (*(ptr) == LETTER)
+			number = i;
+	
+		if (*(ptr) == '\0')
+			break;
+		ptr++;
+	}	
+	printf("\nLetzte Erscheinung des Buchstaben %c ist an Stelle %i", LETTER, number);
+	
+	return 0;
+}
+
+d)
+
+#include <stdio.h>
+
+#define LETTER_1 'a'
+#define LETTER_2 'e'
+
+int main(void)
+{
+	char *ptr = "Das ist der Buchstabe D\0";
+	int i;
+	
+	printf("%s\n\n", ptr);
+	
+	for (i = 1; i < 100; i++)
+	{
+		if (*ptr == LETTER_1)
+			printf("%c ", LETTER_1);
+	
+		if (*ptr == LETTER_2)
+			printf("%c ", LETTER_2);
+		
+		if (*ptr == '\0')
+			break;
+		ptr++;
+	}	
+	
+	return 0;
+}
+
+
