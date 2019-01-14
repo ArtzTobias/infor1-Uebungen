@@ -1,0 +1,220 @@
+Aufgabe 37 
+
+i) + ii)
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int *cpy_array(int v[], int size);
+
+int main(void)
+{
+	int v[] = {7, 8, 9, 10};
+	int *kopiert = NULL;
+	
+	kopiert = cpy_array(v, 4);
+	
+	if (kopiert == NULL)
+		printf("Speicherfehler");
+	
+	printf("%d", kopiert);
+	
+	free(kopiert);
+	
+	return 0;
+}
+
+int *cpy_array(int v[], int size)
+{
+	int *array;
+	
+	array = malloc(size * sizeof(int));
+		
+	if (array == NULL)
+		return NULL;
+	
+	strcpy(array, v);
+	
+	return array;
+}
+
+b)
+
+i) + ii)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX 20
+
+
+char *safecat(char *s, const char *ct);
+
+int main(void)
+{
+	char text1[MAX] = "Pastewka";
+	char text2[MAX] = "Stromberg";
+	char *angefuegt = NULL;
+	
+	angefuegt = safecat(text1, text2);
+	
+	if (angefuegt == NULL)
+		printf("Speicherfehler");
+	
+	printf("%s", angefuegt);
+	
+	free(angefuegt);
+	
+	return 0;
+}
+
+char *safecat(char *s, const char *ct)
+{
+	char *a;
+	
+	a = malloc((strlen(s) + 1) * sizeof(char));
+	
+	if (a == NULL)
+		return NULL;
+	
+	strcpy(a, s);
+	
+	a = realloc(a, strlen(ct) * sizeof(char));
+	
+	if (a == NULL)
+		return NULL;
+	
+	strcat(a, ct);
+	
+	return a;
+	
+}
+Aufgabe 38
+
+siehe Blatt
+
+Aufgabe 39
+
+a)
+
+int safecpy(char **t, char *s)
+{
+	*t = malloc(strlen(s) + sizeof(char));
+	
+	if (*t == NULL)
+		return 0;
+		
+	strcpy(*t, s);
+	
+	return 1;
+}
+
+b)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main(void)
+{
+	char feld[11];
+	char *ptr;
+	double ret;
+	
+	printf("\n10 Zeichen eingeben:");
+	scanf("%s", feld);
+	
+	printf("\n%s", feld);
+	
+	ret = strtod(feld, &ptr);
+	
+	printf("\n\nThe number is %f\n", ret);
+	printf("String part is |%s|", ptr);
+	
+	
+	return 0;
+}
+
+c)
+
+#include <stdio.h>
+
+int main(void)
+{
+	int i = 1;
+	double x = 256;
+	
+	while (x != 2) 
+	{
+		x = x / 2;
+		
+		i++;
+	
+	}
+	
+	printf("%i", i);
+	
+	return 0;
+}
+
+Aufgabe 40
+
+a)
+
+int **matrix_copy(int **m, int ze, int sp)
+{
+	int **matrix;
+	int i, k;
+	
+	for (i = 0; i < ze; i++)
+	{
+		for (k = 0; k < sp; k++)
+		{
+			matrix[i][k] = m[i][k];
+		}
+	}
+	return matrix;
+}
+
+b)
+
+c)
+
+void stringlist_rev(char *list[], int n)
+{
+	int i;
+	int j = 0;
+	
+	char hilf;
+	
+	for (i = n; i >= 0; i--)
+	{
+		hilf = list[j];
+		list[j] = list[i];
+		list[i] = hilf;
+		
+		j++;
+	}
+}
+
+d)
+
+void matrix_print(int *m, int ze, int sp)
+{
+	int i, k;
+	
+	for (i = 0; i < ze; i++)
+	{
+		for (k = 0; k < sp; k++)
+		{
+			printf("%i", m[i][k]);
+		
+		}
+		printf("\n");
+	}
+	
+}
+
+e)
+
