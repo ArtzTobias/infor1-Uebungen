@@ -1,0 +1,365 @@
+Aufgabe 45
+
+a)
+
+1.
+T(n) := (x + 1) – n 
+
+Für (n + 1 <= x) gilt:
+
+T(n) =  (x + 1) – n >= (x + 1) – (n + x)  = (x + 1) > x
+T(n) = (x + 1) – n > (x + 1) – (n + 1) = (x + 1) – n' = T(n')
+
+2.
+T(i) = (b + 1) - i
+
+Für (i <= b) gilt:
+
+T(i) = (b + 1) – i >= (b + 1) – (i * b) = (b + 1) > b
+T(i) = (b + 1) – i > (b + 1) – (i + 1) = (b + 1) – i' = T(i')
+
+b)
+
+A = Algorithmus
+
+1.
+O(1) = Zeitbedarf von A ist unabhängig von der Problemgröße
+
+n = 1 → 1/100
+n = 2 → 1/50
+n = 3 → 1/33
+n = 4 → 1/25
+
+Widerspruch!
+
+2.
+O(log(n)) = Zeitbedarf von A steigt um 1 bei Verdopplung der Problemgröße
+
+n = 1 → 2
+n = 2 → 2,5
+n = 4 → 3
+n = 8 → 3,5
+n = 16 → 4
+Widerspruch??
+
+3.
+O(n) = Zeitbedarf von A steigt proportional zur Problemgröße 
+
+n = 1 → 0
+n = 2 → 2
+n = 3 → 4,75
+n = 4 → 8
+Widerspruch
+
+4.
+O(n²) = Zeitbedarf von A vervierfacht sich bei Verdopplung der Problemgröße
+
+n = 1 → 0.5
+n = 2 → 16
+n = 4 → 56
+n = 8 → 208
+Widerspruch??
+
+5.
+O(2^n) = Zeitbedarf von A quadriert sich bei Verdopplung der Problemgröße
+
+n = 1 → 66
+n = 2 → 68
+n = 4 → 80
+n = 8 → 320
+Widerspruch??
+
+
+Aufgabe 46
+
+a)
+
+1. Problemgröße: Größe des Eingabewerts b
+
+2. Tmin(A)
+
+1 (Wertzuweisung)
+1 (Wertzuweisung)
+1 * (n +1) (Vergleich)
+2 * n (Addition + Wertzuweisung)
+2 * n (Addition + Wertzuweisung)
+
+Ergebnis = 5n + 3
+
+3. Tmax(A) = Tmin(A)
+
+4. O(n)
+
+ b)
+
+1. Problemgröße: Anzahl der Eingabewerte
+
+2. Tmin(A)
+ 
+1 (Wertzuweisung)
+1 (Vergleich)
+1 (Vergleich)
+0 (Wegen Ausgabe nach Vergleich)
+
+Ergebnis = 3
+
+3. Tmax(A)
+
+1 (Wertzuweisung)
+1 * (n+1) (Vergleich)
+1 * n (Vergleich)
+2 * n (Addition + Wertzuweisung)
+
+Ergebnis = 4n + 2
+
+4. O(n)
+
+c)
+
+1. Problemgröße:  Anzahl der Eingabewerte
+
+2. Tmin(A)
+
+1 Wertzuweisung
+1 * (n+1) Vergleich
+1 Wertzuweisung
+1 Wertzuweisung
+0 Geht nicht in die Schleife
+0
+0
+1 Wertzuweisung
+2 Addition + Wertzuweisung
+
+Ergebnis = n + 7
+
+3. Tmax(A)
+
+1 Wertzuweisung
+1 * (n + 1) Vergleich
+1 * n Wertzuweisung
+1 * n Wertzuweisung
+1 * (1 + 2 +...+n)
+1 * (1 + 2 +...+ n - 1)
+2 * (1 + 2 +... + n – 1)
+1 * n Wertzuweisung
+2 * n Addition + Wertzuweisung
+
+Ergebnis = ? 
+
+4. O(n²)
+
+
+Aufgabe 47
+
+a)
+#ifndef RECHTECK_H_INCLUDED
+#define RECHTECK_H_INCLUDED
+#define MAX_LAENGE 10
+#define MAX_BREITE 5
+
+typedef struct _rechteck {
+	double laenge [MAX_LAENGE];
+	double breite [MAX_BREITE];
+} rechteck;
+
+double rechteck_get_laenge(rechteck *a);
+double rechteck_get_breite(rechteck *a);
+
+int rechteck_set_laenge(rechteck *a, double *laenge);
+int rechteck_set_breite(rechteck *a, double *breite);
+
+int rechteck_check_laenge(double *lange);
+int rechteck_check_breite(double *breite);
+
+int rechteck_new(rechteck *a, double *laenge, double *breite);
+
+#endif 
+
+b)
+
+#include <stdio.h>
+#include <string.h>
+
+#define ARTIKEL_MAX_NAME 20
+
+typedef struct _artikel 
+{
+	char name[ARTIKEL_MAX_NAME + 1];
+	double rabatt;
+	double preis;
+
+} ARTIKEL;
+
+int artikel_new(ARTIKEL *a, const char *name, double rabatt, double preis);
+void artikel_print(const ARTIKEL *a);
+int artikel_set_rabatt(ARTIKEL *a, double rabatt);
+
+int main(void)
+{
+	ARTIKEL artikel;
+	
+	int x = 0;
+	int y = 0;
+	
+	x = artikel_new(&artikel, "Bleistift", 0.0, 0.75);
+	
+	if (x == 1)
+		y = artikel_set_rabatt(&artikel, 10.0);
+	else 
+		return 0;
+	
+	if (y == 1)
+		artikel_print(&artikel);
+	else
+		printf("\nFehler");
+	return 0;
+}
+
+int artikel_new(ARTIKEL *a, const char *name, double rabatt, double preis)
+{
+	
+	strcpy(a->name, name);
+	a->rabatt = rabatt;
+	a->preis = preis;
+
+	return 1;
+}
+
+void artikel_print(const ARTIKEL *a)
+{
+	printf("\n Name: %s \n Rabatt: %f \n Preis: %f", a->name, a->rabatt, a->preis);
+}
+
+int artikel_set_rabatt(ARTIKEL *a, double rabatt)
+{
+	a->rabatt = rabatt;
+	
+	return 1;
+}
+
+
+Aufgabe 48
+
+i)
+
+double circle_get_x(const CIRCLE *circle)
+{
+	return circle→x;
+}
+
+ii)
+
+int circle_check_radius(double radius)
+{
+	if (radius > 0)
+		return 1;
+	else
+		return 0;
+}
+
+
+iii)
+
+int circle_set_radius(CIRCLE *circle, double radius)
+{
+	circle->radius = radius;
+
+	if ((circle->radius) == radius)
+		return 1;
+	else 
+		return 0;
+}
+
+iv)
+
+int circle_new(CIRCLE *circle, double x, double y, double radius)
+{
+	circle->x = x;
+	circle->y = y;
+	circle->radius = radius;
+
+	if ((circle->x == x) && (circle->y == y) && (circle->radius == radius))
+		return 1;
+	else
+		return 0;
+}
+
+v)
+
+void circle_print(const CIRCLE *circle)
+{
+	printf(“Kreis an Position (%d, %d) mit Radius %d“, CIRCLE.x, CIRCLE.y, CIRCLE.radius);
+
+}
+
+vi)
+
+double circle_calc_area(const CIRCLE *circle)
+{
+	flaeche = 0;
+
+	flaeche = PI * circle->radius * circle->radius;
+
+	return flaeche;
+}
+
+b)
+
+i)
+
+char *book_get_title(const BOOK *book)
+{
+	return book->title;
+}
+
+ii)
+
+int book_check_isbn10(BOOK *book, const char *isbn10)
+{
+	int i;
+
+	for (i = 0; i < 10; i++)
+	{
+		if (((book->isbn10) [i] < 48) || ((book->isbn10) > 57) )
+			return 0;
+	 
+	}
+	
+	if ((book->isbn10) [10] != 88)
+		return 0; 
+	
+	return 1;
+}
+
+iii)
+
+int book_set_isbn10(BOOK *book, const char *isbn10)
+{
+	(book->isbn10) = malloc(strlen(isbn10) * sizeof(char));
+
+	if(!(book->isbn10))
+		return 0;
+
+	return 1;
+}
+
+iv)
+
+int book_new(BOOK *book, const char *title, const char *isbn10)
+{
+	book->title = malloc(strlen(title));
+	
+	if(!(book->title))
+		return 0;
+	book->title = title;
+	
+	book->isbn10 = malloc(strlen(isbn10));
+	
+	if (!(book->isbn10))
+		return 0;
+
+	book->isbn10 = isbn10;
+
+	return 1;
+}
+
